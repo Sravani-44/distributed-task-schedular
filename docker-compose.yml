@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: dts-postgres
+    environment:
+      POSTGRES_USER: dts
+      POSTGRES_PASSWORD: dts
+      POSTGRES_DB: dts
+    ports:
+      - "5432:5432"
+    volumes:
+      - dts_pg:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    container_name: dts-redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  dts_pg:
